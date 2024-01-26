@@ -14,7 +14,7 @@ const playMusic = (track, pause = false) => {
 
 async function getSongs(folder, callback) {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${folder}/`);
+    let a = await fetch(`https://github.com/hkhurana1602/My-Music-Website/tree/master/Songs/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;

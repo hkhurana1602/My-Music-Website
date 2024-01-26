@@ -14,8 +14,8 @@ const playMusic = (track, pause = false) => {
 
 async function getSongs(folder, callback) {
     currfolder = folder;
-    let baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/") + 1);
-    let a = await fetch(`${baseUrl}${folder}/`);
+    //let baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/") + 1);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -65,7 +65,7 @@ function formatTime(seconds) {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`/songs/`);
+    let a = await fetch(`songs/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -77,7 +77,7 @@ async function displayAlbums() {
 
         if (e.href.includes("/songs")) {
             let folder = (e.href.split("/").slice(-2)[0]);
-            let a = await fetch(`/songs/${folder}/info.json`);
+            let a = await fetch(`songs/${folder}/info.json`);
             let response = await a.json();
             cardContainer.innerHTML +=`<div data-folder="${folder}" class="card ">
             <div class="play">

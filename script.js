@@ -14,7 +14,8 @@ const playMusic = (track, pause = false) => {
 
 async function getSongs(folder, callback) {
     currfolder = folder;
-    let a = await fetch(`/${folder}/`);
+    let baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
+    let a = await fetch(`${baseUrl}${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
